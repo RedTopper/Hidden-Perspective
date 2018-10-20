@@ -51,3 +51,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d6fae587cc36d1458b37e385b79aa72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  size:
+    x: 20
+    z: 20
+  cellPrefab: {fileID: 114715925193898856, guid: 6aaa89bb50a2eed4da71901e363b82fa,
+    type: 2}
+  generationStepDelay: 0.01
+  passagePrefab: {fileID: 114613063918854946, guid: 4924c306f9929e541936196efde17679,
+    type: 2}
+  wallPrefab: {fileID: 114200617962197554, guid: 9fe73005d96d5cf44a225b4cfcafaa7e,
+    type: 2}
+  doorPrefab: {fileID: 0}
+  doorProb: 0

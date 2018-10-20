@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
         {
             XRSettings.enabled = false;
             VREnabled = false;
-            obs.GetComponent<Camera>().rect = new Rect(0, 0, 0.3f, 0.3f);
+            obs.GetComponent<Camera>().rect = new Rect(0.78f, 0f, 0.22f, 1.0f);
         }
     }
 
