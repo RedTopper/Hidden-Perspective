@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    public Maze mazePrefab;
+
+    private Maze mazeInstance;
+
+    void Start () {
         BeginGame();
 	}
 	
-	// Update is called once per frame
 	void Update () {
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -17,13 +19,10 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public Maze mazePrefab;
-
-    private Maze mazeInstance;
-
     private void BeginGame()
     {
         mazeInstance = Instantiate(mazePrefab) as Maze;
+        mazeInstance.name = "Maze Runner";
         StartCoroutine(mazeInstance.Generate());
     }
 

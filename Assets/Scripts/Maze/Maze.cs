@@ -1,26 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Collections.Generic;
 
 public class Maze : MonoBehaviour {
 
-    public IntVector2 size;
-
-    public MazeCell cellPrefab;
-
-    private MazeCell[,] cells;
-
-    public float generationStepDelay;
-
-    public MazePassage passagePrefab;
-
-    public MazeWall wallPrefab;
-
-    public MazeDoor doorPrefab;
-
     [Range(0f, 1f)]
     public float doorProb;
+    public IntVector2 size;
+    public MazeCell cellPrefab;
+    public float generationStepDelay;
+    public MazePassage passagePrefab;
+    public MazeWall wallPrefab;
+    public MazeDoor doorPrefab;
+
+    private MazeCell[,] cells;
 
     public IntVector2 RandomCoordinates
     {
@@ -68,6 +61,7 @@ public class Maze : MonoBehaviour {
             activecells.RemoveAt(currentIndex);
             return;
         }
+
         MazeDirection direction = currentCell.RandomUninitializedDirection;
         IntVector2 coordinates = currentCell.coordinates + direction.ToIntVector2();
         if(ContainsCoordinates(coordinates))
@@ -117,7 +111,7 @@ public class Maze : MonoBehaviour {
         newCell.coordinates = coordinates;
         newCell.name = "Maze Cell " + coordinates.x + ", " + coordinates.z;
         newCell.transform.parent = transform;
-        newCell.transform.localPosition = new Vector3(coordinates.x - size.x * 0.5f + 0.5f, 0f, coordinates.z - size.z * 0.5f + 0.5f);
+        newCell.transform.localPosition = new Vector3((coordinates.x - size.x * 0.5f) * 2f, 0f, (coordinates.z - size.z * 0.5f) * 2f);
         return newCell;
     }
 }
