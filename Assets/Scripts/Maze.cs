@@ -17,6 +17,11 @@ public class Maze : MonoBehaviour {
 
     public MazeWall wallPrefab;
 
+    public MazeDoor doorPrefab;
+
+    [Range(0f, 1f)]
+    public float doorProb;
+
     public IntVector2 RandomCoordinates
     {
         get
@@ -87,6 +92,7 @@ public class Maze : MonoBehaviour {
 
     private void CreatePassage(MazeCell cell, MazeCell otherCell, MazeDirection direction)
     {
+        MazePassage prefab = Random.value < doorProb ? doorPrefab : passagePrefab;
         MazePassage passage = Instantiate(passagePrefab) as MazePassage;
         passage.Initialize(cell, otherCell, direction);
         passage = Instantiate(passagePrefab) as MazePassage;
