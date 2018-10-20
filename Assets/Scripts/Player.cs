@@ -78,7 +78,7 @@ public class Player : MonoBehaviour
         body.transform.position = pos + (yaw * Vector3.forward) * dist - new Vector3(0, offset, 0);
 
         //Move the player
-        gameObject.transform.position += yaw * dir;
+        gameObject.GetComponent<Rigidbody>().velocity = yaw * dir;
     }
 
     public bool IsVREnabled()
