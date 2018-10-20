@@ -1,53 +1,52 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.XR;
 
 public class Player : MonoBehaviour
 {
-    private int xMom;
-    private int yMom;
-    private int zMom;
-    private bool onGround;
-    
+    //Set in configuration
+    public float speed;
+    public float sensitivity = 10f;
+    public float maxYAngle = 80f;
+    private Vector2 currentRotation;
 
-    // Use this for initialization
+    private bool VREnabled = false;
+
     void Start ()
     {
+        if (XRSettings.enabled && XRDevice.isPresent)
+        {
+            VREnabled = true;
+        }
+        else
+        {
+            XRSettings.enabled = false;
+            VREnabled = false;
+        }
     }
 
-    // Update is called once per frame
+    
+
     void Update()
     {
-        Vector3 player = this.transform.position;
+        //movement
+        Vector3 dir = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical")).normalized * speed;
+        transform.position += dir;
 
-        if (Input.GetKey(KeyCode.W))
-        {
-            player.z++;
-            this.transform.position = player;
-        }
+        //look
+        currentRotation.x += Input.GetAxis("Mouse X") * sensitivity;
+        currentRotation.y -= Input.GetAxis("Mouse Y") * sensitivity;
+        currentRotation.x = Mathf.Repeat(currentRotation.x, 360);
+        currentRotation.y = Mathf.Clamp(currentRotation.y, -maxYAngle, maxYAngle);
+        GameObject.Find("CameraMain").transform.rotation = Quaternion.Euler(currentRotation.y, currentRotation.x, 0);
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetMouseButtonDown(0))
         {
-            player.x--;
-            this.transform.position = position;
+            Cursor.lockState = CursorLockMode.Locked;
         }
+    }
 
-        if (Input.GetKey(KeyCode.S))
-        {
-            player.z--;
-            this.transform.position = position;
-        }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            player.x++;
-            this.transform.position = position;
-        }
-
-        if (Input.GetKey(KeyCode.Space) && onGround)
-        {
-            player.y++;
-            this.transform.position = position;
-        }
+    public bool IsVREnabled()
+    {
+        return VREnabled;
     }
 }
