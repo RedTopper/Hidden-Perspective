@@ -21,6 +21,10 @@ public class Player : MonoBehaviour
 
     void Start ()
     {
+        body = GameObject.Find("Player/Body");
+        cam = GameObject.Find("Player/Cam");
+        obs = GameObject.Find("Observer/Cam");
+
         if (XRSettings.enabled && XRDevice.isPresent)
         {
             VREnabled = true;
@@ -31,10 +35,6 @@ public class Player : MonoBehaviour
             VREnabled = false;
             obs.GetComponent<Camera>().rect = new Rect(0, 0, 0.3f, 0.3f);
         }
-
-        body = GameObject.Find("Player/Body");
-        cam = GameObject.Find("Player/Cam");
-        obs = GameObject.Find("Observer/Cam");
     }
 
     void Update()
