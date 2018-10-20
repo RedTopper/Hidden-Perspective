@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     private GameObject obs;
     private GameObject body;
     private GameObject cam;
+    private GameObject handl;
+    private GameObject handr;
     private Vector2 currentRotation;
     private bool VREnabled = false;
 
@@ -24,6 +26,8 @@ public class Player : MonoBehaviour
         body = GameObject.Find("Player/Body");
         cam = GameObject.Find("Player/Cam");
         obs = GameObject.Find("Observer/Cam");
+        handl = GameObject.Find("Player/HandLeft");
+        handr = GameObject.Find("Player/HandRight");
 
         if (XRSettings.enabled && XRDevice.isPresent)
         {
@@ -79,6 +83,20 @@ public class Player : MonoBehaviour
 
         //Move the player
         gameObject.GetComponent<Rigidbody>().velocity = yaw * dir;
+
+        //Move the hands
+        if (VREnabled)
+        {
+            handl.transform.localPosition = OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch);
+            handl.transform.localRotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.LTouch);
+            handr.transform.localPosition = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch);
+            handr.transform.localRotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTouch);
+        }
+        else
+        {
+            handl.transform.RotateAround(cam.transform.position, Vector3.up, angle.y - handl.transform.rotation.eulerAngles.y);
+            handr.transform.RotateAround(cam.transform.position, Vector3.up, angle.y - handr.transform.rotation.eulerAngles.y);
+        }
     }
 
     public bool IsVREnabled()
