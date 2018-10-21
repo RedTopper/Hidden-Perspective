@@ -952,7 +952,6 @@ GameObject:
   - component: {fileID: 1770035991}
   - component: {fileID: 1770035993}
   - component: {fileID: 1770035990}
-  - component: {fileID: 1770035994}
   - component: {fileID: 1770035996}
   - component: {fileID: 1770035995}
   m_Layer: 9
@@ -1074,17 +1073,6 @@ MonoBehaviour:
   resetTrackerOnLoad: 0
   AllowRecenter: 1
   _reorientHMDOnControllerRecenter: 1
---- !u!114 &1770035994
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1770035989}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 896f30ffabef1aa49a87aab3b27e5edd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1770035995
 MonoBehaviour:
   m_ObjectHideFlags: 0
