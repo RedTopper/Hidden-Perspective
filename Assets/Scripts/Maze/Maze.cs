@@ -1,19 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class Maze : MonoBehaviour {
-
+public class Maze : MonoBehaviour
+{
     [Range(0f, 1f)]
-    public float doorProb;
+    public float archProb;
     public IntVector2 size;
     public MazeCell cellPrefab;
     public float generationStepDelay;
     public MazePassage passagePrefab;
     public MazeWall wallPrefab;
-    public MazeDoor doorPrefab;
+    public MazeArch archPrefab;
+    public MazeObjective objectivePrefab;
+    public NavMeshSurface surface;
 
+    private int step;
     private MazeCell[,] cells;
+
+    
 
     public IntVector2 RandomCoordinates
     {
@@ -33,18 +39,22 @@ public class Maze : MonoBehaviour {
         return cells[coordinates.x, coordinates.z];
     }
 
-    public IEnumerator Generate()
+    public void Generate()
     {
-        WaitForSeconds delay = new WaitForSeconds(generationStepDelay);
+        //WaitForSeconds delay = new WaitForSeconds(generationStepDelay);
         cells = new MazeCell[size.x, size.z];
 
+        //generate cells
         List<MazeCell> activeCells = new List<MazeCell>();
         DoFirstGenerationStep(activeCells);
         while (activeCells.Count > 0)
         {
-            yield return delay;
+            //yield return delay;
             DoNextGenerationStep(activeCells);
         }
+
+        //Surface
+        surface.BuildNavMesh();
     }
 
     public void DoFirstGenerationStep(List<MazeCell> activecells)
@@ -86,11 +96,21 @@ public class Maze : MonoBehaviour {
 
     private void CreatePassage(MazeCell cell, MazeCell otherCell, MazeDirection direction)
     {
-        MazePassage prefab = Random.value < doorProb ? doorPrefab : passagePrefab;
-        MazePassage passage = Instantiate(passagePrefab) as MazePassage;
+        step++;
+
+        MazePassage prefab;
+
+        if (step % 100 == 0) prefab = objectivePrefab;
+        else prefab = Random.value < archProb ? archPrefab : passagePrefab;
+        
+        MazePassage passage = Instantiate(prefab) as MazePassage;
+        Vector3 scale = passage.transform.localScale; //All passages have same scale
         passage.Initialize(cell, otherCell, direction);
+        passage.transform.localScale = scale;
+
         passage = Instantiate(passagePrefab) as MazePassage;
         passage.Initialize(otherCell, cell, direction.GetOpposite());
+        passage.transform.localScale = scale;
     }
 
     private void CreateWall(MazeCell cell, MazeCell otherCell, MazeDirection direction)

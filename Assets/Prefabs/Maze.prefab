@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4902727206751004}
   - component: {fileID: 114300560866080124}
+  - component: {fileID: 114661414603703604}
   m_Layer: 0
   m_Name: Maze
   m_TagString: Untagged
@@ -51,15 +52,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d6fae587cc36d1458b37e385b79aa72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorProb: 0
+  archProb: 0.1
   size:
     x: 20
     z: 20
   cellPrefab: {fileID: 114215174191121736, guid: 6aaa89bb50a2eed4da71901e363b82fa,
     type: 2}
-  generationStepDelay: 0.01
+  generationStepDelay: 0
   passagePrefab: {fileID: 114613063918854946, guid: 4924c306f9929e541936196efde17679,
     type: 2}
   wallPrefab: {fileID: 114200617962197554, guid: 9fe73005d96d5cf44a225b4cfcafaa7e,
     type: 2}
-  doorPrefab: {fileID: 0}
+  archPrefab: {fileID: 114766755696992030, guid: 1245d54b46fdfde4e9db7d2d762e4139,
+    type: 2}
+  objectivePrefab: {fileID: 114655382057749480, guid: 475e02c0344384f4cb22bc34dd70749c,
+    type: 2}
+  surface: {fileID: 114661414603703604}
+--- !u!114 &114661414603703604
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1763595167363184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 2
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_BuildHeightMesh: 0
+  m_NavMeshData: {fileID: 0}
