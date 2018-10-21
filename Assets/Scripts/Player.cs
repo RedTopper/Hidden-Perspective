@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     private Vector2 currentRotation;
     private bool VREnabled = false;
     private bool collecting = false;
+    private bool dying = false;
     private int collected = 0;
     private int health = 2;
 
@@ -115,6 +116,7 @@ public class Player : MonoBehaviour
 
         //reset collecting
         collecting = false;
+        dying = false;
     }
 
     public bool IsVREnabled()
@@ -132,12 +134,17 @@ public class Player : MonoBehaviour
 
             //spawn enemy
             Enemy enemy = Instantiate(enemyPrefab) as Enemy;
+            enemy.name = "Enemy";
             enemy.transform.position = new Vector3(1, 0.21f, 1);
         }
 
-        if (col.gameObject.name == "Enemy")
+        if (!dying && col.gameObject.name == "Enemy")
         {
+            dying = true;
+
             health--;
+
+            Debug.Log(health);
 
             if (health <= 0)
             {
