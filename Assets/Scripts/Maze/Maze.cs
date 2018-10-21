@@ -17,9 +17,8 @@ public class Maze : MonoBehaviour
     public NavMeshSurface surface;
 
     private int step;
+    private int objectiveCount = 0;
     private MazeCell[,] cells;
-
-    
 
     public IntVector2 RandomCoordinates
     {
@@ -96,13 +95,20 @@ public class Maze : MonoBehaviour
 
     private void CreatePassage(MazeCell cell, MazeCell otherCell, MazeDirection direction)
     {
-        step++;
+        //Create objective every once in a while
+        if (step % 100 == 0)
+        {
+            MazeObjective objective = Instantiate(objectivePrefab);
+            Vector3 size = objective.transform.localScale;
+            objective.transform.parent = cell.transform;
+            objective.transform.localPosition = new Vector3(0, 0.5f, 0);
+            objective.transform.localScale = size;
+            objective.name = "Objective";
+            objectiveCount++;
+        }
 
-        MazePassage prefab;
-
-        if (step % 100 == 0) prefab = objectivePrefab;
-        else prefab = Random.value < archProb ? archPrefab : passagePrefab;
-        
+        //Create passages either in the form of archways or passages
+        MazePassage prefab = Random.value < archProb ? archPrefab : passagePrefab;
         MazePassage passage = Instantiate(prefab) as MazePassage;
         Vector3 scale = passage.transform.localScale; //All passages have same scale
         passage.Initialize(cell, otherCell, direction);
@@ -111,6 +117,8 @@ public class Maze : MonoBehaviour
         passage = Instantiate(passagePrefab) as MazePassage;
         passage.Initialize(otherCell, cell, direction.GetOpposite());
         passage.transform.localScale = scale;
+        
+        step++;
     }
 
     private void CreateWall(MazeCell cell, MazeCell otherCell, MazeDirection direction)
