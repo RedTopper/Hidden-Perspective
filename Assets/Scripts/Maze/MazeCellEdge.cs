@@ -14,10 +14,11 @@ public abstract class MazeCellEdge : MonoBehaviour
         this.otherCell = otherCell;
         this.direction = direction;
 
+        float small = 0.001f;
         Vector3 scale = transform.localScale;
         cell.SetEdge(direction, this);
         transform.parent = cell.transform;
-        transform.localPosition = Vector3.zero;
+        transform.localPosition =  new Vector3(Random.Range(-small, small), Random.Range(-small, small), Random.Range(-small, small));
         transform.localRotation = direction.ToRotation();
         transform.localScale = scale;
     }
