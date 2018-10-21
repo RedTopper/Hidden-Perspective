@@ -27,7 +27,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1773732072548018
 GameObject:
@@ -41,11 +41,11 @@ GameObject:
   - component: {fileID: 23741435701712398}
   - component: {fileID: 65399448051505012}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1958143763062918
 GameObject:
@@ -61,7 +61,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4032693764316938
 Transform:
@@ -83,7 +83,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1958143763062918}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.3880354, y: -15.540298, z: -2.9846473}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4032693764316938}
@@ -98,8 +98,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1773732072548018}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0.476}
-  m_LocalScale: {x: 1, y: 0.01, z: 0.05}
+  m_LocalPosition: {x: 0, y: 1.01, z: 0.475}
+  m_LocalScale: {x: 1, y: 0.02, z: 0.05}
   m_Children: []
   m_Father: {fileID: 4111398389924956}
   m_RootOrder: 1
@@ -223,7 +223,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a18a40e1ee72894bb85bbdd3a89a408, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cell: {fileID: 114715925193898856, guid: 6aaa89bb50a2eed4da71901e363b82fa, type: 2}
-  otherCell: {fileID: 114715925193898856, guid: 6aaa89bb50a2eed4da71901e363b82fa,
-    type: 2}
+  cell: {fileID: 0}
+  otherCell: {fileID: 0}
   direction: 0

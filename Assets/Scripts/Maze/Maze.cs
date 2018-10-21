@@ -1,30 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Collections.Generic;
 
-public class Maze : MonoBehaviour {
-
+public class Maze : MonoBehaviour
+{
     public IntVector2 size;
-
     public MazeCell cellPrefab;
-
-    private MazeCell[,] cells;
-
     public float generationStepDelay;
-
     public MazePassage passagePrefab;
-
     public MazeWall wallPrefab;
-
     public MazeArch archPrefab;
-
     public MazeObjective objectivePrefab;
+    public int step;
+    private MazeCell[,] cells;
 
     [Range(0f, 1f)]
     public float archProb;
-
-    public int step;
 
     public IntVector2 RandomCoordinates
     {
@@ -72,6 +63,7 @@ public class Maze : MonoBehaviour {
             activecells.RemoveAt(currentIndex);
             return;
         }
+
         MazeDirection direction = currentCell.RandomUninitializedDirection;
         IntVector2 coordinates = currentCell.coordinates + direction.ToIntVector2();
         if(ContainsCoordinates(coordinates))
@@ -112,21 +104,26 @@ public class Maze : MonoBehaviour {
     private void CreateWall(MazeCell cell, MazeCell otherCell, MazeDirection direction)
     {
         MazeWall wall = Instantiate(wallPrefab) as MazeWall;
+        Vector3 scale = wall.transform.localScale; //All walls have same scale
         wall.Initialize(cell, otherCell, direction);
+        wall.transform.localScale = scale;
         if (otherCell != null)
         {
             wall = Instantiate(wallPrefab) as MazeWall;
             wall.Initialize(otherCell, cell, direction.GetOpposite());
+            wall.transform.localScale = scale;
         }
     }
 
     public MazeCell CreateCell(IntVector2 coordinates)
     {
         MazeCell newCell = Instantiate(cellPrefab) as MazeCell;
+        Vector3 scale = newCell.transform.localScale;
         cells[coordinates.x, coordinates.z] = newCell;
         newCell.coordinates = coordinates;
         newCell.name = "Maze Cell " + coordinates.x + ", " + coordinates.z;
         newCell.transform.parent = transform;
+        newCell.transform.localScale = scale;
         newCell.transform.localPosition = new Vector3(coordinates.x - size.x * 0.5f + 0.5f, 0f, coordinates.z - size.z * 0.5f + 0.5f);
         return newCell;
     }
