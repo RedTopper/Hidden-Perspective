@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.AI;
 
-public class EnemyMovement : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     Transform player;               // Reference to the player's position.
     NavMeshAgent nav;
@@ -13,6 +13,15 @@ public class EnemyMovement : MonoBehaviour
         // Set up the references.
         player = GameObject.FindGameObjectWithTag("Player").transform;
         nav = GetComponent<NavMeshAgent>();
+        NavMeshHit closestHit;
+        if (NavMesh.SamplePosition(gameObject.transform.position, out closestHit, 500f, NavMesh.AllAreas))
+        {
+            gameObject.transform.position = closestHit.position;
+        }
+        else
+        {
+            Debug.Log("Really could not find navmesh :(");
+        }
     }
 
 

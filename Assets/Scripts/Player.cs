@@ -13,6 +13,9 @@ public class Player : MonoBehaviour
     public float sensitivityJoy = 10f;
     public float maxYAngle = 80f;
 
+    //Enemy config
+    public Enemy enemyPrefab;
+
     private GameObject obs;
     private GameObject body;
     private GameObject cam;
@@ -20,6 +23,7 @@ public class Player : MonoBehaviour
     private GameObject handr;
     private Vector2 currentRotation;
     private bool VREnabled = false;
+    private bool collecting = false;
     private int collected = 0;
 
     void Start ()
@@ -105,6 +109,9 @@ public class Player : MonoBehaviour
         {
             //Do something?
         }
+
+        //reset collecting
+        collecting = false;
     }
 
     public bool IsVREnabled()
@@ -114,10 +121,15 @@ public class Player : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.name == "Objective")
+        if (!collecting && col.gameObject.name == "Objective")
         {
+            collecting = true;
             Destroy(col.gameObject);
             collected++;
+
+            //spawn enemy
+            Enemy enemy = Instantiate(enemyPrefab) as Enemy;
+            enemy.transform.position = new Vector3(1, 0.21f, 1);
         }
     }
 }
