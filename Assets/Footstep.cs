@@ -11,11 +11,17 @@ public class Footstep : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)) && GetComponent<AudioSource>().isPlaying == false)
+        bool walking = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D);
+        if (walking && !GetComponent<AudioSource>().isPlaying)
         {
             GetComponent<AudioSource>().volume = Random.Range(0.8f, 1);
             GetComponent<AudioSource>().pitch = Random.Range(0.8f, 1);
             GetComponent<AudioSource>().Play();
+        }
+
+        if(!walking && GetComponent<AudioSource>().isPlaying)
+        {
+            GetComponent<AudioSource>().Stop();
         }
 	}
 }
