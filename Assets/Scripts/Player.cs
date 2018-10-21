@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.XR;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -109,7 +110,7 @@ public class Player : MonoBehaviour
         Maze maze = GameObject.Find("Maze Runner").GetComponent<Maze>();
         if (collected > 0 && maze.GetObjectiveCount() == collected)
         {
-            Application.LoadLevel(0);
+            SceneManager.LoadScene("Win");
         }
 
         //reset collecting
@@ -134,13 +135,13 @@ public class Player : MonoBehaviour
             enemy.transform.position = new Vector3(1, 0.21f, 1);
         }
 
-        if (col.gameObject == "Enemy")
+        if (col.gameObject.name == "Enemy")
         {
             health--;
 
             if (health <= 0)
             {
-                //to death dscreen
+                SceneManager.LoadScene("Lose");
             }
 
             //add bloody screen
