@@ -147,4 +147,9 @@ public class Maze : MonoBehaviour
         newCell.transform.localPosition = new Vector3(coordinates.x - size.x * 0.5f + 0.5f, 0f, coordinates.z - size.z * 0.5f + 0.5f);
         return newCell;
     }
+
+    public int GetObjectiveCount()
+    {
+        return objectiveCount;
+    }
 }
