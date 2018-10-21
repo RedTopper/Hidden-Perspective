@@ -775,6 +775,8 @@ MonoBehaviour:
   sensitivityMouse: 10
   sensitivityJoy: 2
   maxYAngle: 90
+  enemyPrefab: {fileID: 114422564319265382, guid: 729b36c1a297e11478d2de361c9f4897,
+    type: 2}
 --- !u!54 &1492285793
 Rigidbody:
   m_ObjectHideFlags: 0
