@@ -55,6 +55,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4366052279621158}
+  - component: {fileID: 114655382057749480}
   m_Layer: 0
   m_Name: Objective
   m_TagString: Untagged
@@ -82,7 +83,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1595285462555666}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.0877275, y: 6.473034, z: -0.77470326}
+  m_LocalPosition: {x: -3.7433448, y: 2.0379353, z: 1.513619}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4675819866819518}
@@ -187,6 +188,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1103759511865652}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114655382057749480
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1595285462555666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e787164c8137ac445aae06f72dbe24fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cell: {fileID: 114715925193898856, guid: 6aaa89bb50a2eed4da71901e363b82fa, type: 2}
+  otherCell: {fileID: 114715925193898856, guid: 6aaa89bb50a2eed4da71901e363b82fa,
+    type: 2}
+  direction: 0
 --- !u!135 &135582792365471792
 SphereCollider:
   m_ObjectHideFlags: 1
