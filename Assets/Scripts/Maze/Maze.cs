@@ -7,12 +7,20 @@ public class Maze : MonoBehaviour
 {
     [Range(0f, 1f)]
     public float archProb;
+
+    [Range(0f, 1f)]
+    public float fakeProb;
+
     public IntVector2 size;
     public MazeCell cellPrefab;
-    public float generationStepDelay;
+    public float generationStepDelay; 
+
     public MazePassage passagePrefab;
-    public MazeWall wallPrefab;
     public MazeArch archPrefab;
+
+    public MazeWall wallPrefab;
+    public MazeFakeWall fakePrefab;
+
     public MazeObjective objectivePrefab;
     public NavMeshSurface surface;
 
@@ -123,15 +131,19 @@ public class Maze : MonoBehaviour
 
     private void CreateWall(MazeCell cell, MazeCell otherCell, MazeDirection direction)
     {
-        MazeWall wall = Instantiate(wallPrefab) as MazeWall;
+        MazeWall prefab = Random.value < fakeProb ? fakePrefab : wallPrefab;
+
+        MazeWall wall = Instantiate(prefab) as MazeWall;
         Vector3 scale = wall.transform.localScale; //All walls have same scale
         wall.Initialize(cell, otherCell, direction);
         wall.transform.localScale = scale;
+
         if (otherCell != null)
         {
-            wall = Instantiate(wallPrefab) as MazeWall;
+            wall = Instantiate(prefab) as MazeWall;
             wall.Initialize(otherCell, cell, direction.GetOpposite());
             wall.transform.localScale = scale;
+
         }
     }
 

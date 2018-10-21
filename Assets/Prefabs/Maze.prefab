@@ -53,6 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   archProb: 0.1
+  fakeProb: 0.102
   size:
     x: 20
     z: 20
@@ -61,9 +62,11 @@ MonoBehaviour:
   generationStepDelay: 0
   passagePrefab: {fileID: 114613063918854946, guid: 4924c306f9929e541936196efde17679,
     type: 2}
+  archPrefab: {fileID: 114766755696992030, guid: 1245d54b46fdfde4e9db7d2d762e4139,
+    type: 2}
   wallPrefab: {fileID: 114200617962197554, guid: 9fe73005d96d5cf44a225b4cfcafaa7e,
     type: 2}
-  archPrefab: {fileID: 114766755696992030, guid: 1245d54b46fdfde4e9db7d2d762e4139,
+  fakePrefab: {fileID: 114966094405727022, guid: 186b5184d83b7e749bfd69b9baa9a858,
     type: 2}
   objectivePrefab: {fileID: 114655382057749480, guid: 475e02c0344384f4cb22bc34dd70749c,
     type: 2}
@@ -93,6 +96,6 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.13333334
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 0}
