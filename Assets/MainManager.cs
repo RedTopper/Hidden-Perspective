@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainManager : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class MainManager : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Return))
-            Application.LoadLevel(1);
+            SceneManager.LoadScene("Game");
 
         if (Input.GetKeyDown(KeyCode.Escape))
             Application.Quit();
