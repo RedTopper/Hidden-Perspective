@@ -21,8 +21,7 @@ GameObject:
   - component: {fileID: 4163313395891734}
   - component: {fileID: 33251328761534918}
   - component: {fileID: 23006879397978694}
-  - component: {fileID: 135912847918890334}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: inner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,8 +38,7 @@ GameObject:
   - component: {fileID: 4675819866819518}
   - component: {fileID: 33342842795678480}
   - component: {fileID: 23808920076786044}
-  - component: {fileID: 135582792365471792}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: outer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +54,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4366052279621158}
   - component: {fileID: 114655382057749480}
-  m_Layer: 0
+  - component: {fileID: 135498142788819458}
+  m_Layer: 10
   m_Name: Objective
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +82,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1595285462555666}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.7433448, y: 2.0379353, z: 1.513619}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4675819866819518}
@@ -199,31 +198,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e787164c8137ac445aae06f72dbe24fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cell: {fileID: 114715925193898856, guid: 6aaa89bb50a2eed4da71901e363b82fa, type: 2}
-  otherCell: {fileID: 114715925193898856, guid: 6aaa89bb50a2eed4da71901e363b82fa,
-    type: 2}
-  direction: 0
---- !u!135 &135582792365471792
+--- !u!135 &135498142788819458
 SphereCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1103759511865652}
+  m_GameObject: {fileID: 1595285462555666}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &135912847918890334
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1006851929350674}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.25
   m_Center: {x: 0, y: 0, z: 0}

@@ -13,6 +13,9 @@ public class Player : MonoBehaviour
     public float sensitivityJoy = 10f;
     public float maxYAngle = 80f;
 
+    //Enemy config
+    public Enemy enemyPrefab;
+
     private GameObject obs;
     private GameObject body;
     private GameObject cam;
@@ -20,6 +23,8 @@ public class Player : MonoBehaviour
     private GameObject handr;
     private Vector2 currentRotation;
     private bool VREnabled = false;
+    private bool collecting = false;
+    private int collected = 0;
 
     void Start ()
     {
@@ -97,10 +102,34 @@ public class Player : MonoBehaviour
             handl.transform.RotateAround(cam.transform.position, Vector3.up, angle.y - handl.transform.rotation.eulerAngles.y);
             handr.transform.RotateAround(cam.transform.position, Vector3.up, angle.y - handr.transform.rotation.eulerAngles.y);
         }
+
+        //Check if the player has won
+        Maze maze = GameObject.Find("Maze Runner").GetComponent<Maze>();
+        if (collected > 0 && maze.GetObjectiveCount() == collected)
+        {
+            //Do something?
+        }
+
+        //reset collecting
+        collecting = false;
     }
 
     public bool IsVREnabled()
     {
         return VREnabled;
+    }
+
+    void OnCollisionEnter(Collision col)
+    {
+        if (!collecting && col.gameObject.name == "Objective")
+        {
+            collecting = true;
+            Destroy(col.gameObject);
+            collected++;
+
+            //spawn enemy
+            Enemy enemy = Instantiate(enemyPrefab) as Enemy;
+            enemy.transform.position = new Vector3(1, 0.21f, 1);
+        }
     }
 }
