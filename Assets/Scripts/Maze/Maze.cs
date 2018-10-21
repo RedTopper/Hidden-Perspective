@@ -104,7 +104,7 @@ public class Maze : MonoBehaviour
     private void CreatePassage(MazeCell cell, MazeCell otherCell, MazeDirection direction)
     {
         //Create objective every once in a while
-        if (step % 100 == 0)
+        if (step % 80 == 0)
         {
             MazeObjective objective = Instantiate(objectivePrefab);
             Vector3 size = objective.transform.localScale;
@@ -131,8 +131,15 @@ public class Maze : MonoBehaviour
 
     private void CreateWall(MazeCell cell, MazeCell otherCell, MazeDirection direction)
     {
-        if (cell.coordiantes.)
-        MazeWall prefab = Random.value < fakeProb ? fakePrefab : wallPrefab;
+        MazeWall prefab;
+        if (cell.coordinates.x == 0 || cell.coordinates.x == size.x - 1 || cell.coordinates.z == 0 || cell.coordinates.z == size.z - 1)
+        {
+            prefab = wallPrefab;
+        }
+        else
+        {
+            prefab = Random.value < fakeProb ? fakePrefab : wallPrefab;
+        }
 
         MazeWall wall = Instantiate(prefab) as MazeWall;
         Vector3 scale = wall.transform.localScale; //All walls have same scale
