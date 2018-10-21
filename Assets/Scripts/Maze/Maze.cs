@@ -104,7 +104,7 @@ public class Maze : MonoBehaviour
     private void CreatePassage(MazeCell cell, MazeCell otherCell, MazeDirection direction)
     {
         //Create objective every once in a while
-        if (step % 100 == 0)
+        if (step % 80 == 0)
         {
             MazeObjective objective = Instantiate(objectivePrefab);
             Vector3 size = objective.transform.localScale;
