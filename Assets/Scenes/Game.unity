@@ -464,7 +464,7 @@ Camera:
   far clip plane: 1000
   field of view: 79.8
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 3
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
@@ -579,7 +579,7 @@ GameObject:
   - component: {fileID: 1372214936}
   - component: {fileID: 1372214937}
   m_Layer: 9
-  m_Name: Spot Light
+  m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -610,7 +610,7 @@ Light:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1.2
   m_Range: 6.2688174
-  m_SpotAngle: 58.086586
+  m_SpotAngle: 60
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -717,9 +717,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1492285790}
   - component: {fileID: 1492285792}
+  - component: {fileID: 1492285794}
   - component: {fileID: 1492285793}
   - component: {fileID: 1492285791}
-  - component: {fileID: 1492285794}
   - component: {fileID: 1492285795}
   m_Layer: 9
   m_Name: Player
@@ -775,8 +775,7 @@ MonoBehaviour:
   sensitivityMouse: 10
   sensitivityJoy: 2
   maxYAngle: 90
-  enemyPrefab: {fileID: 114422564319265382, guid: 729b36c1a297e11478d2de361c9f4897,
-    type: 2}
+  enemyPrefab: {fileID: 0}
 --- !u!54 &1492285793
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -813,7 +812,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 21ba1cc4bc6a1a341a4f337ac3f1d2a2, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1107,7 +1106,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d5821a1d13156314a88269fdc509961d, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1289,6 +1288,7 @@ GameObject:
   - component: {fileID: 2034942852}
   - component: {fileID: 2034942851}
   - component: {fileID: 2034942850}
+  - component: {fileID: 2034942853}
   m_Layer: 9
   m_Name: Lamp
   m_TagString: Untagged
@@ -1337,7 +1337,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 626701cb03f0ab24b90e19936d883f62, type: 2}
+  - {fileID: 2100000, guid: 2ed305a6f216a2a4c8022a0faae19622, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1364,6 +1364,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2034942848}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2034942853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2034942848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bebaa545cd593e4abc8ba7e3c00332b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 10
+  time: 90
+  chance: 0.05
 --- !u!1 &2128737442
 GameObject:
   m_ObjectHideFlags: 0
