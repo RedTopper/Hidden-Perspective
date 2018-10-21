@@ -131,7 +131,15 @@ public class Maze : MonoBehaviour
 
     private void CreateWall(MazeCell cell, MazeCell otherCell, MazeDirection direction)
     {
-        MazeWall prefab = Random.value < fakeProb ? fakePrefab : wallPrefab;
+        MazeWall prefab;
+        if (cell.coordinates.x == 0 || cell.coordinates.x == size.x - 1 || cell.coordinates.z == 0 || cell.coordinates.z == size.z - 1)
+        {
+            prefab = wallPrefab;
+        }
+        else
+        {
+            prefab = Random.value < fakeProb ? fakePrefab : wallPrefab;
+        }
 
         MazeWall wall = Instantiate(prefab) as MazeWall;
         Vector3 scale = wall.transform.localScale; //All walls have same scale
