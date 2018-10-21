@@ -14,7 +14,7 @@ public class Main : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return) || OVRInput.Get(OVRInput.Button.One))
             SceneManager.LoadScene("Game");
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || OVRInput.Get(OVRInput.Button.Two))
             Application.Quit();
     }
 }

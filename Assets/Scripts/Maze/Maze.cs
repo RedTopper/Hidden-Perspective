@@ -131,6 +131,7 @@ public class Maze : MonoBehaviour
 
     private void CreateWall(MazeCell cell, MazeCell otherCell, MazeDirection direction)
     {
+        if (cell.coordiantes.)
         MazeWall prefab = Random.value < fakeProb ? fakePrefab : wallPrefab;
 
         MazeWall wall = Instantiate(prefab) as MazeWall;
