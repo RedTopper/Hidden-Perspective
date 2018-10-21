@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class rand_sound : MonoBehaviour {
+public class RandSound : MonoBehaviour {
 
     private int round = 1;
     private float init = 0;

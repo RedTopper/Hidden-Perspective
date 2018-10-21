@@ -4,38 +4,50 @@ using UnityEngine;
 
 public class Flicker : MonoBehaviour {
 
-    private bool hit = false;
     private bool on = true;
-    public int chanceOff;
-    public int chanceOn;
+    private bool flicker = false;
+    private int round = 1;
+    private float init = 0;
 
-    void OnCollisionEnter(Collision col)
-    {
-        Debug.Log("hit");
-        if (col.gameObject.name == "cap_player")
-        {
-            hit = true;
-            Destroy(col.gameObject);
-        }
+    public int duration = 10;
+    public int time = 90;
+    public float chance = 0.05f;
+
+    // Use this for initialization
+    void Start () {
+        init = Time.time;
     }
 
-    private void Update()
+    // Update is called once per frame
+    void Update()
     {
-        if (hit) {
-            int rand = Random.Range(0, 100);
-            Renderer renderer = GetComponent<Renderer>();
+        if (Time.time - init > time * round)
+        {
+            flicker = true;
+        }
 
-            if (on && rand < chanceOff)
-            {
-                renderer.material.SetColor("_EmissionColor", new Color(0, 0, 0));
-                on = false;
-            }
+        if (Time.time - init > duration + time * round)
+        {
+            flicker = false;
+            on = true;
+            round++;
+        }
 
-            if (!on && rand < chanceOn)
-            {
-                renderer.material.SetColor("_EmissionColor", new Color(1, 1, 1));
-                on = true;
-            }
+        if (flicker && Random.Range(0f, 1f) < chance)
+        {
+            on = !on;
+        }
+
+        Renderer renderer = GetComponent<Renderer>();
+        if (on)
+        {
+            renderer.material.SetColor("_EmissionColor", new Color(1, 1, 1));
+            GameObject.Find("Flashlight/Light").GetComponent<Light>().enabled = true;
+        }
+        else
+        {
+            renderer.material.SetColor("_EmissionColor", new Color(0, 0, 0));
+            GameObject.Find("Flashlight/Light").GetComponent<Light>().enabled = false;
         }
     }
 }
