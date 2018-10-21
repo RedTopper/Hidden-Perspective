@@ -52,8 +52,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d6fae587cc36d1458b37e385b79aa72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  archProb: 0.1
-  fakeProb: 0.102
+  archProb: 0.05
+  fakeProb: 0.05
   size:
     x: 16
     z: 16
