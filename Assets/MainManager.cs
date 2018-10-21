@@ -12,19 +12,9 @@ public class MainManager : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Return))
-            toGame(1);
+            Application.LoadLevel(1);
 
         if (Input.GetKeyDown(KeyCode.Escape))
-            toQuit();
-    }
-
-	public void toGame(int scene)
-    {
-        Application.LoadLevel(scene);
-    }
-	
-	public void toQuit()
-    {
-        Application.Quit();
+            Application.Quit();
     }
 }
