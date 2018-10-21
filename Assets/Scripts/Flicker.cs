@@ -21,12 +21,13 @@ public class Flicker : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (Time.time - init > time * round)
+        if (!flicker && Time.time - init > time * round)
         {
             flicker = true;
+            GetComponent<AudioSource>().Play();
         }
 
-        if (Time.time - init > duration + time * round)
+        if (flicker && Time.time - init > duration + time * round)
         {
             flicker = false;
             on = true;
