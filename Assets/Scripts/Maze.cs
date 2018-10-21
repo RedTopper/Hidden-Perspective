@@ -19,8 +19,12 @@ public class Maze : MonoBehaviour {
 
     public MazeArch archPrefab;
 
+    public MazeObjective objectivePrefab;
+
     [Range(0f, 1f)]
     public float archProb;
+
+    public int step;
 
     public IntVector2 RandomCoordinates
     {
@@ -92,10 +96,16 @@ public class Maze : MonoBehaviour {
 
     private void CreatePassage(MazeCell cell, MazeCell otherCell, MazeDirection direction)
     {
-        MazePassage prefab = Random.value < archProb ? archPrefab : passagePrefab;
+        step++;
+
+        MazePassage prefab;
+
+        if (step % 100 == 0) prefab = objectivePrefab;
+        else prefab = Random.value < archProb ? archPrefab : passagePrefab;
+        
         MazePassage passage = Instantiate(prefab) as MazePassage;
         passage.Initialize(cell, otherCell, direction);
-        passage = Instantiate(prefab) as MazePassage;
+        passage = Instantiate(passagePrefab) as MazePassage;
         passage.Initialize(otherCell, cell, direction.GetOpposite());
     }
 
