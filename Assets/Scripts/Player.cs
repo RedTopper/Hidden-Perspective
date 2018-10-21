@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
     private bool VREnabled = false;
     private bool collecting = false;
     private int collected = 0;
-    private int health;
+    private int health = 2;
 
 
     void Start ()
