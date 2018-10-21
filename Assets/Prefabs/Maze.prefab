@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d6fae587cc36d1458b37e385b79aa72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorProb: 0
+  archProb: 0.1
   size:
     x: 20
     z: 20
@@ -63,7 +63,10 @@ MonoBehaviour:
     type: 2}
   wallPrefab: {fileID: 114200617962197554, guid: 9fe73005d96d5cf44a225b4cfcafaa7e,
     type: 2}
-  doorPrefab: {fileID: 0}
+  archPrefab: {fileID: 114766755696992030, guid: 1245d54b46fdfde4e9db7d2d762e4139,
+    type: 2}
+  objectivePrefab: {fileID: 114655382057749480, guid: 475e02c0344384f4cb22bc34dd70749c,
+    type: 2}
   surface: {fileID: 114661414603703604}
 --- !u!114 &114661414603703604
 MonoBehaviour:
@@ -90,6 +93,6 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.13333334
+  m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 0}
