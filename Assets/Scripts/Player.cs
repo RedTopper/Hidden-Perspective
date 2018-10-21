@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.XR;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class Player : MonoBehaviour
     private bool VREnabled = false;
     private bool collecting = false;
     private int collected = 0;
+    private int health;
+
 
     void Start ()
     {
@@ -107,7 +110,7 @@ public class Player : MonoBehaviour
         Maze maze = GameObject.Find("Maze Runner").GetComponent<Maze>();
         if (collected > 0 && maze.GetObjectiveCount() == collected)
         {
-            //Do something?
+            SceneManager.LoadScene("Win");
         }
 
         //reset collecting
@@ -130,6 +133,20 @@ public class Player : MonoBehaviour
             //spawn enemy
             Enemy enemy = Instantiate(enemyPrefab) as Enemy;
             enemy.transform.position = new Vector3(1, 0.21f, 1);
+        }
+
+        if (col.gameObject.name == "Enemy")
+        {
+            health--;
+
+            if (health <= 0)
+            {
+                SceneManager.LoadScene("Lose");
+            }
+
+            //add bloody screen
+
+            Destroy(col.gameObject);
         }
     }
 }

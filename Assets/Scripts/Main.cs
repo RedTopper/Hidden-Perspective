@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainManager : MonoBehaviour
+public class Main : MonoBehaviour
 {
 
     void Start()
