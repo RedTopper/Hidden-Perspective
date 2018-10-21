@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23318300378481702}
   - component: {fileID: 65895058676883322}
   m_Layer: 0
-  m_Name: Tip
+  m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,7 +52,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1827518154818582}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.6618958, y: -5.520718, z: -5.1745615}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4941591755244460}
@@ -66,8 +66,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1067943537759656}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.18757606, y: 0.434057, z: -0.26743412}
-  m_LocalScale: {x: 1, y: 0.01, z: 0.049999997}
+  m_LocalPosition: {x: 0, y: 1.01, z: 0.475}
+  m_LocalScale: {x: 1, y: 0.02, z: 0.1}
   m_Children: []
   m_Father: {fileID: 4434912592293900}
   m_RootOrder: 0
@@ -137,7 +137,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c884f506edd601a49b52da66d01e1aa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cell: {fileID: 114715925193898856, guid: 6aaa89bb50a2eed4da71901e363b82fa, type: 2}
-  otherCell: {fileID: 114715925193898856, guid: 6aaa89bb50a2eed4da71901e363b82fa,
-    type: 2}
-  direction: 0

@@ -104,9 +104,13 @@ public class Maze : MonoBehaviour
         else prefab = Random.value < archProb ? archPrefab : passagePrefab;
         
         MazePassage passage = Instantiate(prefab) as MazePassage;
+        Vector3 scale = passage.transform.localScale; //All passages have same scale
         passage.Initialize(cell, otherCell, direction);
+        passage.transform.localScale = scale;
+
         passage = Instantiate(passagePrefab) as MazePassage;
         passage.Initialize(otherCell, cell, direction.GetOpposite());
+        passage.transform.localScale = scale;
     }
 
     private void CreateWall(MazeCell cell, MazeCell otherCell, MazeDirection direction)
