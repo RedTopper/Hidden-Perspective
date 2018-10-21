@@ -11,7 +11,7 @@ public class Main : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Return) || OVRInput.Get(OVRInput.Button.One))
             SceneManager.LoadScene("Game");
 
         if (Input.GetKeyDown(KeyCode.Escape))
