@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Maze : MonoBehaviour
 {
+    [Range(0f, 1f)]
+    public float archProb;
     public IntVector2 size;
     public MazeCell cellPrefab;
     public float generationStepDelay;
@@ -11,11 +14,12 @@ public class Maze : MonoBehaviour
     public MazeWall wallPrefab;
     public MazeArch archPrefab;
     public MazeObjective objectivePrefab;
-    public int step;
+    public NavMeshSurface surface;
+
+    private int step;
     private MazeCell[,] cells;
 
-    [Range(0f, 1f)]
-    public float archProb;
+    
 
     public IntVector2 RandomCoordinates
     {
@@ -35,18 +39,22 @@ public class Maze : MonoBehaviour
         return cells[coordinates.x, coordinates.z];
     }
 
-    public IEnumerator Generate()
+    public void Generate()
     {
-        WaitForSeconds delay = new WaitForSeconds(generationStepDelay);
+        //WaitForSeconds delay = new WaitForSeconds(generationStepDelay);
         cells = new MazeCell[size.x, size.z];
 
+        //generate cells
         List<MazeCell> activeCells = new List<MazeCell>();
         DoFirstGenerationStep(activeCells);
         while (activeCells.Count > 0)
         {
-            yield return delay;
+            //yield return delay;
             DoNextGenerationStep(activeCells);
         }
+
+        //Surface
+        surface.BuildNavMesh();
     }
 
     public void DoFirstGenerationStep(List<MazeCell> activecells)
