@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Maze : MonoBehaviour {
 
@@ -12,6 +13,7 @@ public class Maze : MonoBehaviour {
     public MazePassage passagePrefab;
     public MazeWall wallPrefab;
     public MazeDoor doorPrefab;
+    public NavMeshSurface surface;
 
     private MazeCell[,] cells;
 
@@ -33,18 +35,22 @@ public class Maze : MonoBehaviour {
         return cells[coordinates.x, coordinates.z];
     }
 
-    public IEnumerator Generate()
+    public void Generate()
     {
-        WaitForSeconds delay = new WaitForSeconds(generationStepDelay);
+        //WaitForSeconds delay = new WaitForSeconds(generationStepDelay);
         cells = new MazeCell[size.x, size.z];
 
+        //generate cells
         List<MazeCell> activeCells = new List<MazeCell>();
         DoFirstGenerationStep(activeCells);
         while (activeCells.Count > 0)
         {
-            yield return delay;
+            //yield return delay;
             DoNextGenerationStep(activeCells);
         }
+
+        //Surface
+        surface.BuildNavMesh();
     }
 
     public void DoFirstGenerationStep(List<MazeCell> activecells)

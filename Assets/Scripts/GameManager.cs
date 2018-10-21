@@ -24,7 +24,8 @@ public class GameManager : MonoBehaviour {
         mazeInstance = Instantiate(mazePrefab) as Maze;
         mazeInstance.name = "Maze Runner";
         mazeInstance.transform.localScale = new Vector3(2f, 2f, 2f);
-        StartCoroutine(mazeInstance.Generate());
+        //StartCoroutine(mazeInstance.Generate());
+        mazeInstance.Generate();
     }
 
     private void RestartGame()
